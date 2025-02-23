@@ -10,6 +10,7 @@ import {
     signOut,
     updateProfile,
 } from 'firebase/auth'
+import axios from "axios";
 // import axios from "axios";
 
 export const AuthContext = createContext(null)
@@ -54,19 +55,29 @@ const AuthProvider = ({ children }) => {
             if (currentUser?.email) {
                 setUser(currentUser)
 
+                // set user info in db
+                await axios.post(`${import.meta.env.VITE_API_URL}/users/${currentUser?.email}`,
+                    {
+                        name: currentUser?.displayName,
+                        image: currentUser?.photoURL,
+                        email: currentUser?.email,
+                        role: 'employee',
+                    }
+                )
+
                 // Get JWT token
-                // await axios.post(
-                //     `${import.meta.env.VITE_API_URL}/jwt`,
-                //     {
-                //         email: currentUser?.email,
-                //     },
-                //     { withCredentials: true }
-                // )
+                await axios.post(
+                    `${import.meta.env.VITE_API_URL}/jwt`,
+                    {
+                        email: currentUser?.email,
+                    },
+                    { withCredentials: true }
+                )
             } else {
                 setUser(currentUser)
-                // await axios.get(`${import.meta.env.VITE_API_URL}/logout`, {
-                //     withCredentials: true,
-                // })
+                await axios.get(`${import.meta.env.VITE_API_URL}/logout`, {
+                    withCredentials: true,
+                })
             }
             setLoading(false)
         })

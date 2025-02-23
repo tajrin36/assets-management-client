@@ -21,8 +21,8 @@ const Navber = () => {
                         </Link>
 
                         {/* middle part */}
-                        <div className="hidden md:flex items-center gap-6">
-                            <Link to="/" className="text-sm font-semibold hover:text-gray-700">
+                        <div className="md:flex items-center gap-6">
+                            <Link to="/" className="text-xl font-semibold hover:text-gray-700">
                                 Home
                             </Link>
 
@@ -53,12 +53,12 @@ const Navber = () => {
                             {isOpen && (
                                 <div className='absolute rounded-xl shadow-md w-[40vw] md:w-[10vw] bg-white overflow-hidden right-0 top-12 text-sm'>
                                     <div className='flex flex-col cursor-pointer'>
-                                        <Link
+                                        {/* <Link
                                             to='/'
-                                            className='block md:hidden px-4 py-3 hover:bg-neutral-100 transition font-semibold'
+                                            className=' block px-4 py-3 hover:bg-neutral-100 transition font-semibold'
                                         >
                                             Home
-                                        </Link>
+                                        </Link> */}
 
                                         {user ? (
                                             <>
