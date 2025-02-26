@@ -28,8 +28,9 @@ const HRManagerSignup = () => {
             console.log(result);
 
             // Redirect to payment page
-            navigate("/payment");
+            
             toast.success("Signup Successful! Redirecting to payment...");
+            navigate("/hrdashboard");
         } catch (err) {
             console.log(err);
             toast.error(err?.message);
@@ -39,7 +40,7 @@ const HRManagerSignup = () => {
     const handleGoogleSignIn = async () => {
         try {
             await signInWithGoogle();
-            navigate("/payment");
+            navigate("/hrdashboard");
             toast.success("Signup Successful! Redirecting to payment...");
         } catch (err) {
             console.log(err);
@@ -52,7 +53,7 @@ const HRManagerSignup = () => {
             <div className="flex flex-col max-w-md p-6 rounded-md bg-gray-100 text-gray-900">
                 <button
                     onClick={() => navigate('/')}
-                    className="self-start px-4 py-2 mb-4 text-white bg-lime-500 rounded-md hover:bg-lime-600"
+                    className="self-start px-4 py-2 mb-4 bg-[#83e7f4] hover:bg-[#51ddef] text-black rounded-md"
                 >
                     Home
                 </button>
@@ -75,7 +76,7 @@ const HRManagerSignup = () => {
                         <option value="premium">Premium - $200/month</option>
                     </select>
 
-                    <button type="submit" className="bg-lime-500 w-full rounded-md py-3 text-white">
+                    <button type="submit" className="bg-[#83e7f4] hover:bg-[#51ddef] text-black w-full rounded-md py-3">
                         {loading ? <TbFidgetSpinner className="animate-spin m-auto" /> : "Proceed to Payment"}
                     </button>
                 </form>
@@ -90,7 +91,7 @@ const HRManagerSignup = () => {
 
                 <p className="text-center text-gray-400 mt-4">
                     Already have an account?{" "}
-                    <Link to="/login" className="text-lime-500 hover:underline">Login</Link>.
+                    <Link to="/login" className="text-blue-500 hover:underline">Login</Link>.
                 </p>
             </div>
         </div>

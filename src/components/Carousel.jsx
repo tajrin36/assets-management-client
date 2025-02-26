@@ -18,7 +18,6 @@ import Slide from './Slide'
 export default function Carousel() {
     return (
         <div className='container px-6 py-5 mx-auto'>
-            {/* <h1 className='text-center mb-2 text-4xl text-[#eca12c] font-semibold animate__animated animate__bounce animate__delay-2s animate__infinite'>Hey volunteers!</h1> */}
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}

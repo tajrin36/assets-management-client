@@ -49,6 +49,19 @@ const AuthProvider = ({ children }) => {
         })
     }
 
+    // role
+    const fetchUserRole = async (email) => {
+        try {
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/users/${email}`);
+            return response.data.role;
+        } catch (err) {
+            console.error("Error fetching user role:", err);
+            return null;
+        }
+    }
+
+
+    // original
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async currentUser => {
             console.log('CurrentUser-->', currentUser?.email)
@@ -61,7 +74,6 @@ const AuthProvider = ({ children }) => {
                         name: currentUser?.displayName,
                         image: currentUser?.photoURL,
                         email: currentUser?.email,
-                        role: 'employee',
                     }
                 )
 
@@ -86,6 +98,47 @@ const AuthProvider = ({ children }) => {
         }
     }, [])
 
+
+    // useEffect(() => {
+    //     const unsubscribe = onAuthStateChanged(auth, async currentUser => {
+    //         if (currentUser?.email) {
+    //             setUser(currentUser);
+
+    //             // Check if user exists in DB and fetch role
+    //             const { data: existingUser } = await axios.get(`${import.meta.env.VITE_API_URL}/users/${currentUser?.email}`);
+    //             let userRole = existingUser?.role || "employee"; // Default to "employee" if new user
+
+    //             // If user does not exist, store info with role
+    //             if (!existingUser) {
+    //                 await axios.post(`${import.meta.env.VITE_API_URL}/users/${currentUser?.email}`, {
+    //                     name: currentUser?.displayName,
+    //                     image: currentUser?.photoURL,
+    //                     email: currentUser?.email,
+    //                     role: userRole,
+    //                 });
+    //             }
+
+    //             // Store user role in state (if needed for role-based routing)
+    //             currentUser.role = userRole;
+
+    //             // Get JWT token
+    //             await axios.post(
+    //                 `${import.meta.env.VITE_API_URL}/jwt`,
+    //                 { email: currentUser?.email },
+    //                 { withCredentials: true }
+    //             );
+    //         } else {
+    //             setUser(currentUser);
+    //             await axios.get(`${import.meta.env.VITE_API_URL}/logout`, { withCredentials: true });
+    //         }
+    //         setLoading(false);
+    //     });
+    //     return () => {
+    //         unsubscribe();
+    //     };
+    // }, []);
+
+
     const authInfo = {
         user,
         setUser,
@@ -96,6 +149,7 @@ const AuthProvider = ({ children }) => {
         signInWithGoogle,
         logOut,
         updateUserProfile,
+        fetchUserRole,
     }
 
     return (

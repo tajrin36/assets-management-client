@@ -77,7 +77,8 @@ const Login = () => {
             <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
                 <button
                     onClick={() => navigate('/')}
-                    className="self-start px-4 py-2 mb-4 text-white bg-lime-500 rounded-md hover:bg-lime-600"
+                    className="self-start px-4 py-2 mb-4 bg-[#83e7f4] hover:bg-[#51ddef] text-black rounded-md "
+                    
                 >
                     Home
                 </button>
@@ -129,7 +130,7 @@ const Login = () => {
                     <div>
                         <button
                             type='submit'
-                            className='bg-lime-500 w-full rounded-md py-3 text-white'
+                            className='bg-[#83e7f4] hover:bg-[#51ddef] text-black w-full rounded-md py-3'
                         >
                             {loading ? (
                                 <TbFidgetSpinner className='animate-spin m-auto' />

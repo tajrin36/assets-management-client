@@ -10,6 +10,8 @@ const Navber = () => {
 
     const { user, logOut } = useAuth()
     const [isOpen, setIsOpen] = useState(false)
+
+    
     return (
         <div className='fixed w-full bg-white z-10 shadow-sm'>
             <div className='py-4 border-b-[1px]'>
@@ -63,7 +65,7 @@ const Navber = () => {
                                         {user ? (
                                             <>
                                                 <Link
-                                                    to='/dashboard'
+                                                    to='/hrdashboard'
                                                     className='px-4 py-3 hover:bg-neutral-100 transition font-semibold'
                                                 >
                                                     Dashboard

@@ -19,15 +19,15 @@ const Slide = ({ image, text }) => {
                     <br />
                     {text === "HR" ? (
                         <Link
-                            to="/join-hr"
-                            className='w-full px-5 py-4 mt-4 text-md font-medium capitalize transition-colors duration-300 transform bg-lime-500  rounded-md  text-white lg:w-auto hover:bg-gray-500 focus:outline-none focus:bg-gray-500'
+                            to="/hrsignup"
+                            className='w-full px-5 py-4 mt-4 text-md font-medium capitalize transition-colors duration-300 transform bg-[#83e7f4]  rounded-md  text-black lg:w-auto hover:bg-gray-500 focus:outline-none focus:bg-gray-500'
                         >
                             Join as HR
                         </Link>
                     ) : text === "Employee" ? (
                         <Link
-                            to="/join-employee"
-                            className='w-full px-5 py-4 mt-4 text-md font-medium capitalize transition-colors duration-300 transform bg-lime-500  rounded-md  text-white lg:w-auto hover:bg-gray-500 focus:outline-none focus:bg-gray-500'
+                            to="/empsignup"
+                            className='w-full px-5 py-4 mt-4 text-md font-medium capitalize transition-colors duration-300 transform bg-[#83e7f4]  rounded-md  text-black lg:w-auto hover:bg-gray-500 focus:outline-none focus:bg-gray-500'
                         >
                             Join as Employee
                         </Link>
